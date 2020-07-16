@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-
-namespace QuadProg.Setup
+﻿namespace QuadProg.Setup
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+
     public static class SpreadSheetExamples
     {
         public static void RunExamples()
@@ -18,8 +18,7 @@ namespace QuadProg.Setup
             var csvText = new StringBuilder();
 
             var watch = new Stopwatch();
-            watch.Restart();
-            System.Threading.Thread.Sleep(10);
+            watch.Restart(); System.Threading.Thread.Sleep(10);
 
             foreach (SpreadSheetExample example in examples)
             {
@@ -31,10 +30,7 @@ namespace QuadProg.Setup
                 runner.PrintResults(results, example, elapsedMs, csvText);
             }
 
-
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            File.WriteAllText(path + @"\Result.csv", csvText.ToString());
+            File.WriteAllText(@"C:\Users\Mark\Documents\Result.csv", csvText.ToString());
         }
 
         private static List<SpreadSheetExample> BuildExamples()
@@ -47,14 +43,14 @@ namespace QuadProg.Setup
                 LowerConstraint = -10000,
                 UpperConstraint = -9999,
 
-                BasisVectors = new double[,]
-                {
-                    {1, 2, 1},
-                    {0, 1, 0},
-                    {0, 4, 2}
+                BasisVectors = new double[,]   
+                { 
+                    {  1,  2,  1 },
+                    {  0,  1,  0 },
+                    {  0,  4,  2 }
                 },
 
-                TargetVector = new double[] {7, 1, 10},
+                TargetVector = new double[] { 7, 1, 10 },
             });
 
             examples.Add(new SpreadSheetExample
@@ -63,34 +59,33 @@ namespace QuadProg.Setup
                 LowerConstraint = 3,
                 UpperConstraint = 2,
 
-                BasisVectors = new double[,]
-                {
-                    {1, 2, 1},
-                    {0, 1, 0},
-                    {0, 4, 2}
+                BasisVectors = new double[,]   
+                { 
+                    {  1,  2,  1 },
+                    {  0,  1,  0 },
+                    {  0,  4,  2 }
                 },
 
-                TargetVector = new double[] {7, 1, 10},
+                TargetVector = new double[] { 7, 1, 10 },
             });
 
             examples.Add(new SpreadSheetExample
             {
-                Name =
-                    "QP_Subspace: Optimisation where basis vectors do not span the entire vector space of the target profile.",
+                Name = "QP_Subspace: Optimisation where basis vectors do not span the entire vector space of the target profile.",
                 LowerConstraint = 0,
                 UpperConstraint = 2,
 
-                BasisVectors = new double[,]
-                {
-                    {1, 2, 1},
-                    {0, 1, 0},
-                    {1, 0, 3},
-                    {1, 0, 4},
-                    {1, 0, 5},
-                    {0, 4, 2}
+                BasisVectors = new double[,]   
+                { 
+                    {  1,  2,  1 },
+                    {  0,  1,  0 },
+                    {  1,  0,  3 },
+                    {  1,  0,  4 },
+                    {  1,  0,  5 },
+                    {  0,  4,  2 }
                 },
 
-                TargetVector = new double[] {7, 1, 0, 2, 2, 10},
+                TargetVector = new double[] { 7, 1, 0, 2, 2, 10 },
             });
 
             List<SpreadSheetExample> fileExamples = ReadFromFile();
@@ -149,7 +144,7 @@ namespace QuadProg.Setup
         {
             int width = array.GetLength(0);
             int height = array.GetLength(1);
-            List<double> ret = new List<double>(width*height);
+            List<double> ret = new List<double>(width * height);
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)

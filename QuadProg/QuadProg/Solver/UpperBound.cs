@@ -23,7 +23,7 @@
             return new UpperBound(position, double.PositiveInfinity);
         }
 
-        public static implicit operator double (UpperBound bound)
+        public static implicit operator double(UpperBound bound)
         {
             return bound.Limit;
         }

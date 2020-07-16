@@ -18,7 +18,7 @@
             return new LowerBound(position, double.NegativeInfinity);
         }
 
-        public static implicit operator double (LowerBound bound)
+        public static implicit operator double(LowerBound bound)
         {
             return bound.Limit;
         }

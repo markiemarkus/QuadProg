@@ -1,8 +1,8 @@
-﻿using MathNet.Numerics.LinearAlgebra.Factorization;
-using System;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra.Factorization;
+    using System;
+
     public class PredictorCorrectorSolver : IQpAlgorithm
     {
         #region Fields

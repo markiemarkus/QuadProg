@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using System;
+
     public class QpMessageUpdateEventArgs : EventArgs
     {
         private readonly string message;

@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F4B7998-B414-4A9F-9F47-311A1D8BF041}</ProjectGuid>
+    <ProjectGuid>{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QuadProg</RootNamespace>
     <AssemblyName>QuadProg</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,13 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MathNet.Numerics, Version=3.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.10.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.7.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.14.0.0.1\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="QLNet, Version=1.4.0.30, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QLNet.1.4.0.30\lib\net35\QLNet.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,30 +52,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OptionPricing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Solver\QpProgressReport.cs" />
-    <Compile Include="Setup\ExcelSpreadSheet.cs" />
-    <Compile Include="Setup\QpLeastSquaresProblem.cs" />
-    <Compile Include="Setup\SpreadSheetExample.cs" />
     <Compile Include="Setup\SpreadSheetExampleRunner.cs" />
     <Compile Include="Setup\SpreadSheetExamples.cs" />
     <Compile Include="Solver\Bound.cs" />
     <Compile Include="Solver\BoxConstraint.cs" />
-    <Compile Include="Solver\ConsoleOuputService.cs" />
-    <Compile Include="Solver\IQpAlgorithm.cs" />
-    <Compile Include="Solver\IQpInitialPointStrategy.cs" />
+    <Compile Include="Solver\ConsoleOutputService.cs" />
     <Compile Include="Solver\IQpPreSolver.cs" />
+    <Compile Include="Solver\LowerBound.cs" />
+    <Compile Include="Solver\QpPreSolver.cs" />
+    <Compile Include="Solver\QpProgressAnalyser.cs" />
+    <Compile Include="Setup\ExcelSpreadSheet.cs" />
+    <Compile Include="Solver\IQpAlgorithm.cs" />
+    <Compile Include="Setup\QpLeastSquaresProblem.cs" />
     <Compile Include="Solver\IQpProgressAnalyser.cs" />
+    <Compile Include="Solver\IQpInitialPointStrategy.cs" />
     <Compile Include="Solver\IQpProgressReportBroadcaster.cs" />
     <Compile Include="Solver\IQpProgressReportPublisher.cs" />
-    <Compile Include="Solver\LowerBound.cs" />
     <Compile Include="Solver\NewtonSystem.cs" />
     <Compile Include="Solver\PredictorCorrectorSolver.cs" />
     <Compile Include="Solver\QpMessageUpdateEventArgs.cs" />
-    <Compile Include="Solver\QpPreSolver.cs" />
     <Compile Include="Solver\QpProblem.cs" />
-    <Compile Include="Solver\QpProgressAnalyser.cs" />
+    <Compile Include="Setup\SpreadSheetExample.cs" />
+    <Compile Include="Solver\QpProgressReport.cs" />
     <Compile Include="Solver\QpProgressReportPublisher.cs" />
     <Compile Include="Solver\QpReportPublishedEventArgs.cs" />
     <Compile Include="Solver\QpSimpleStarter.cs" />
@@ -87,24 +87,56 @@
     <Compile Include="Solver\Variables.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <Content Include="Resources\QuadraticProgramming2.xlsx">
+    <Content Include="..\Resources\QuadraticProgramming2.xlsx">
+      <Link>QuadraticProgramming2.xlsx</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="libiomp5md.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="MathNet.Numerics.MKL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MathNet.Numerics.MKL.Win-x86.2.0.0\build\MathNet.Numerics.MKL.Win-x86.targets" Condition="Exists('..\packages\MathNet.Numerics.MKL.Win-x86.2.0.0\build\MathNet.Numerics.MKL.Win-x86.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MathNet.Numerics.MKL.Win-x86.2.0.0\build\MathNet.Numerics.MKL.Win-x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MathNet.Numerics.MKL.Win-x86.2.0.0\build\MathNet.Numerics.MKL.Win-x86.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

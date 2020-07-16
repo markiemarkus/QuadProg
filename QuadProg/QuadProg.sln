@@ -1,9 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadProg", "QuadProg\QuadProg.csproj", "{5F4B7998-B414-4A9F-9F47-311A1D8BF041}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuadProg", "QuadProg\QuadProg.csproj", "{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlglibProject", "AlglibProject\AlglibProject.csproj", "{C7D25B5F-BCDA-4AAC-846D-CD3D27BCA34A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{97F6505D-F5D6-47ED-98C2-D30ABB2CF8CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{14AE0E65-945C-4712-84B7-8AF294420B66}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\QuadraticProgramming2.xlsx = Resources\QuadraticProgramming2.xlsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EE56AC73-2897-45DC-91B2-8DBF72719F35}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +27,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F4B7998-B414-4A9F-9F47-311A1D8BF041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F4B7998-B414-4A9F-9F47-311A1D8BF041}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F4B7998-B414-4A9F-9F47-311A1D8BF041}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F4B7998-B414-4A9F-9F47-311A1D8BF041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61DBDBD8-13AE-4DE1-A879-C1586F8DB5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D25B5F-BCDA-4AAC-846D-CD3D27BCA34A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D25B5F-BCDA-4AAC-846D-CD3D27BCA34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D25B5F-BCDA-4AAC-846D-CD3D27BCA34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D25B5F-BCDA-4AAC-846D-CD3D27BCA34A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F6505D-F5D6-47ED-98C2-D30ABB2CF8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F6505D-F5D6-47ED-98C2-D30ABB2CF8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F6505D-F5D6-47ED-98C2-D30ABB2CF8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F6505D-F5D6-47ED-98C2-D30ABB2CF8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9A4ACF4-F658-4D20-97E0-4C5A417BB134}
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,10 @@
-﻿using QuadProg.Solver;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
-
-namespace QuadProg.Setup
+﻿namespace QuadProg.Setup
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using MathNet.Numerics.LinearAlgebra.Double;
+
+    using QuadProg.Solver;
+
     public class QpLeastSquaresFormulator
     {
         #region Properties
@@ -97,7 +98,7 @@ namespace QuadProg.Setup
         {
             int cols = BasisVectors.ColumnCount;
 
-            // Matrix<double> topA = Matrix<double>.Build.DenseIdentity(cols);
+         // Matrix<double> topA = Matrix<double>.Build.DenseIdentity(cols);
             Matrix<double> topA = Matrix<double>.Build.SparseIdentity(cols);
 
             return topA.Append(-1 * topA);
@@ -108,7 +109,7 @@ namespace QuadProg.Setup
             var cols = this.BasisVectors.ColumnCount;
 
             return Vector<double>.Build.Dense(cols * 2, (r) =>
-                (r < cols) ? this.LowerConstraint : -1 * this.UpperConstraint);
+                (r < cols) ? this.LowerConstraint  : -1 * this.UpperConstraint);
         }
 
         #endregion

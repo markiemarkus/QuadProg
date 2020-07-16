@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace QuadProg.Setup
+﻿namespace QuadProg.Setup
 {
+    using System.Collections.Generic;
+
     public class SpreadSheetExample
     {
         public string Name { get; set; }

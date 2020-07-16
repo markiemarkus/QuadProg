@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MathNet.Numerics.LinearAlgebra;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class QpProblem
     {
         #region Fields
@@ -79,7 +80,7 @@ namespace QuadProg.Solver
         {
             #region Properties
 
-            public Matrix<double> Q { get; set; }
+            public Matrix<double> Q {get; set; }
 
             public Vector<double> c { get; set; }
 
@@ -121,10 +122,10 @@ namespace QuadProg.Solver
 
             public QpProblem Build()
             {
-                if (this.Q == null || this.c == null || this.A == null || this.b == null)
-                {
+                if (this.Q == null || this.c == null || this.A == null || this.b == null )
+	            {
                     throw new ArgumentNullException();
-                }
+	            }
 
                 return new QpProblem(this.Q, this.c, this.A, this.b);
             }

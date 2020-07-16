@@ -1,7 +1,7 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+
     public interface IQpInitialPointStrategy
     {
         Variables GenerateInitialPoint(QpProblem problem, Vector<double> x);

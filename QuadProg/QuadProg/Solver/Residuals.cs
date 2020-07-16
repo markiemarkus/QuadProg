@@ -1,9 +1,9 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Residuals
     {
         #region Fields
@@ -88,4 +88,3 @@ namespace QuadProg.Solver
         #endregion
     }
 }
-

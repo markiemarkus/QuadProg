@@ -1,9 +1,9 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
-using ExcelApp = Microsoft.Office.Interop.Excel.Application;
-
-namespace QuadProg.Setup
+﻿namespace QuadProg.Setup
 {
+    using Microsoft.Office.Interop.Excel;
+    using System;
+    using ExcelApp = Microsoft.Office.Interop.Excel.Application;
+
     public class ExcelSpreadSheet
     {
         public Workbook GetExcelWorkBook(string filename)
@@ -25,7 +25,7 @@ namespace QuadProg.Setup
 
             return book;
         }
-
+        
         public double[,] ReadRange(Workbook book, string worksheetName, string rangeAddress)
         {
             Worksheet sheet = (Worksheet)book.Sheets[worksheetName];

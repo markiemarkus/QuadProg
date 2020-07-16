@@ -1,7 +1,7 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+
     public class QpProgressReport
     {
         #region Fields

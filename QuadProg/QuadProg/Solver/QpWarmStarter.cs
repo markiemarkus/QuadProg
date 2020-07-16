@@ -1,8 +1,8 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Factorization;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using MathNet.Numerics.LinearAlgebra.Factorization;
+
     public class QpWarmStarter : IQpInitialPointStrategy
     {
         #region Fields
@@ -35,12 +35,12 @@ namespace QuadProg.Solver
 
             this.startingResiduals = new Residuals(problem, initialPoint);
             this.startingEquations = new NewtonSystem(problem, initialPoint);
-
+            
             ISolver<double> choleskyFactor = this.startingEquations.InitialCholeskyFactor;
             Variables step = this.startingEquations.ComputeStep(initialPoint, this.startingResiduals, choleskyFactor);
-
+            
             initialPoint.UpdateMultipliersWithoutViolation(step);
-
+            
             this.startingResiduals.Update(initialPoint);
 
             return initialPoint;

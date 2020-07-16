@@ -1,8 +1,8 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Factorization;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using MathNet.Numerics.LinearAlgebra.Factorization;
+
     public class NewtonSystem
     {
         #region Fields
@@ -43,7 +43,7 @@ namespace QuadProg.Solver
         {
             if (iteration == 0)
             {
-                return this.initialCholeskyFactor;
+                return this.initialCholeskyFactor; 
             }
 
             return this.Factorize(currentIterate);

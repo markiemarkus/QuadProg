@@ -1,15 +1,15 @@
-﻿using System;
-using System.Text;
-using MathNet.Numerics.LinearAlgebra;
-using QuadProg.Solver;
-
-namespace QuadProg.Setup
+﻿namespace QuadProg.Setup
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using QuadProg.Solver;
+    using System;
+    using System.Text;
+
     public class SpreadSheetExampleRunner
     {
         #region Methods
 
-        public QpProgressReport Run(SpreadSheetExample example)
+        public QpProgressReport  Run(SpreadSheetExample example)
         {
             Matrix<double> basisVectors = Matrix<double>.Build.DenseOfArray(example.BasisVectors);
             Vector<double> targetVector = Vector<double>.Build.DenseOfEnumerable(example.TargetVector);
@@ -25,14 +25,14 @@ namespace QuadProg.Setup
 
             IQpProgressReportBroadcaster publisher = new QpProgressReportPublisher();
             IQpInitialPointStrategy warmStarter = new QpWarmStarter();
-
+            
             var listener = new ConsoleOutputService();
             listener.Subscribe(publisher);
 
             var solverHack = new PredictorCorrectorSolver(
-                new QpPreSolver(problem.A, problem.b),
-                warmStarter,
-                new QpProgressAnalyser(problem, true),
+                new QpPreSolver(problem.A, problem.b), 
+                warmStarter, 
+                new QpProgressAnalyser(problem, true), 
                 publisher);
 
             return solverHack.Solve(problem);

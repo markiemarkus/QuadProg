@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using MathNet.Numerics.LinearAlgebra;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class QpPreSolver : IQpPreSolver
     {
         #region Fields

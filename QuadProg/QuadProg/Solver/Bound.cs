@@ -23,7 +23,7 @@
         #region Properties
 
         public abstract bool IsUnbounded { get; }
-
+        
         public int Position
         {
             get { return this.position; }

@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using System;
+
     public class QpProgressAnalyser : IQpProgressAnalyser
     {
         #region Fields
@@ -95,5 +95,5 @@ namespace QuadProg.Solver
         }
 
         #endregion
-    }
+    }    
 }

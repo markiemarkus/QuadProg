@@ -1,8 +1,8 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using System;
-
-namespace QuadProg.Solver
+﻿namespace QuadProg.Solver
 {
+    using MathNet.Numerics.LinearAlgebra;
+    using System;
+
     public class Variables
     {
         #region Constructors
@@ -23,6 +23,7 @@ namespace QuadProg.Solver
             get { return z.Count; }
         }
 
+        // TODO Address public setter
         public Vector<double> x { get; set; }
         public Vector<double> z { get; set; }
         public Vector<double> s { get; set; }
